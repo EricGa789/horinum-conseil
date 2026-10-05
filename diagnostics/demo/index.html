@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0F2238">
+<title>Horinum Conseil · Démonstration à accès réservé</title>
+
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; background:#0F2238; color:#FFFFFF; font:400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; display:flex; align-items:center}
+.gate{width:100%; max-width:74rem; margin:0 auto; padding:clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3rem)}
+.gate__brand{margin:0 0 1.1rem; font-weight:600; font-size:.9375rem; letter-spacing:.02em; color:#E3AA45}
+.gate__title{margin:0; font:500 clamp(2rem, 1.4rem + 2.4vw, 3.2rem)/1.1 Georgia, "Times New Roman", serif; max-width:18ch}
+.gate__lead{margin:1.25rem 0 2.25rem; color:#C9D3DF; max-width:44ch}
+.gate__label{display:block; font-size:.875rem; font-weight:600; margin-bottom:.5rem; color:#FFFFFF}
+.gate__row{display:flex; flex-wrap:wrap; gap:.6rem; max-width:34rem}
+.gate__input{flex:1 1 16rem; min-width:0; font:500 1.0625rem/1.2 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; padding:.85rem 1rem; border:1.5px solid rgba(255,255,255,.35); background:rgba(255,255,255,.06); color:#FFFFFF; border-radius:2px}
+.gate__input:focus{outline:2px solid #E3AA45; outline-offset:2px; border-color:transparent}
+.gate__btn{font:600 .9375rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; padding:.95rem 1.4rem; border:0; background:#FFFFFF; color:#0F2238; border-radius:2px; cursor:pointer}
+.gate__btn:hover{background:#E3AA45}
+.gate__btn:disabled{opacity:.6; cursor:wait}
+.gate__msg{min-height:1.6em; margin:.8rem 0 0; font-size:.9375rem; color:#F0C77A}
+.gate__foot{margin:3.5rem 0 0; font-size:.8125rem; color:#A9B6C6}
+.gate__busy{display:none; color:#C9D3DF}
+.is-busy .gate__form{visibility:hidden}
+.is-busy .gate__busy{display:block}
+</style>
+</head>
+<body class="is-busy">
+<main class="gate">
+  <p class="gate__brand">Horinum Conseil</p>
+  <h1 class="gate__title">Démonstration à accès réservé</h1>
+  <p class="gate__lead">Cette démonstration fait partie d’un portfolio transmis avec un code d’accès. Saisissez le code reçu pour l’ouvrir.</p>
+  <p class="gate__busy" aria-live="polite">Ouverture…</p>
+  <form class="gate__form" id="gate-form" autocomplete="off">
+    <label class="gate__label" for="code">Code d’accès</label>
+    <div class="gate__row">
+      <input class="gate__input" id="code" name="code" type="password" autocapitalize="characters" autocorrect="off" spellcheck="false" required>
+      <button class="gate__btn" id="gate-btn" type="submit">Ouvrir</button>
+    </div>
+    <p class="gate__msg" id="gate-msg" role="status" aria-live="polite"></p>
+  </form>
+  <noscript><p class="gate__msg">JavaScript doit être activé pour ouvrir ce document.</p></noscript>
+  <p class="gate__foot">© 2026 Éric Gaymard. Tous droits réservés.</p>
+</main>
+<script id="payload" type="application/json">{"v": 1, "iter": 600000, "salt": "57ds-lEGRAx_H61U7ZA8WQ", "iv": "79p_pFh1ZSnnGNO4", "ct": "hJk7t6H04ZbpVd3RGVA0tbhM1jbZkVlR3fkzbngPJ1-RtmS1OLChrtIf_DcnhhOGf03ytS2D4ylZ7Watwa01MntHU20bNl4SFhLydxZy_k4_hdqZi1YgMPDodLnIg6MOAbr15sRq9C_HrFOp1VrvfM84zP9Pls6aHf0E-EccwR9-FsArLqAnU56vaPdfm301glDYCAJdMalavwVC4HxIB2xldHPQ9BAlOIj3WzajlLPAcQKfT11_KPWpJmxxyI8nu9Yh2BCke6fkVkEP6rpTIVthLOZ370CePGG74CB5MYsIJCTk8B_O00uEgA2riusYLlI1a_yKwes9t0pFTJJrXspHICLNIYD2QptJGXLbkUGM8DOOYksnjVKKcfuo8C3Y2H5ldPiJyFqH1Hpgevd_pmblW_sszwZonoS6t2FAPItbwBIfz9mUAEEkbAjw4S-ZRqiXFDIHPDwWVryj4Pmv5LCYB43_qfbHRDH3JbRuaRcnHWCy1cRgvJ8U49ht8vDY_mq3kVFI0iLUHMK_t8C0qqDtCemx8s0IlVFGrCF9qgst9hTB0vGuZXTHi7AYwNezwjSW7GLfQeIi4fKIbH3pUA2vIms2THaNZ_qrjmQ1RtaSUlbu7qAa0okBtJlhPjDwsok_AHtHP0YPOkaHgvHN4WC7DoM4aCAdYVE9_rEAqT2_Kall2RCFP0nhtCVQqBjo0ryPudAu-5T5LKzl1nW6X_lIUPNctJnE_V6Ee6idWtVJQjrNRSZS3kWtTXyIk23XLInI3APzKUH3G2LzjqC1rtW7G_kBQ0featUCFeR7trbOTDleqK1LsexGIS8YvCedbW5sCYyACgdxyio96nOwtpaE3fKzZe5uwtIlZ4NvTFY-_FvMjw3vyQ4eYAxD19Ed3QzmzhAMX18DeyKOUGtnuieB0nAY7biqOvURirWlR1CvA3710IWLsVwa7CNjc-tbhXo6g7WeR2fpFF2vzsRgVZupJ_d6EQuc1TFPOjhIyAESwo5aB0Dy1ngB_YdtzU_AT9m01e3nElVk6q-kw2ZvoP_9HXcDbXFzvR7m6rVo2ghTlSkkFcbL4D4aNxmsBIdz-rw6jcaNt0-y0ATP5ZLFdoLdSDX-tL0BXLqkkQ6deQ0gCgr3ThkdWShmrMH29z8pvR1u34qb5-Kl1DKYGMdOXgR6WWlTV1MrDp9Pu87QNx0Y47_hk-tSksVJ3jsYgPHlrN10txRCwDRBL3wZNtR-Z6dRAkONjFkU3wsSnb1fkKsunqs4QlyjFcvDZBTDzhqC-6E5UJoL6oB-czF2lhIhptQNIdUjCG-fr9ilSIDN-09JyBBInTNwGP04kfxXRBo7ccw1yyVNTyC5PH8rsLwHZazFypO7lN9wwlQ-K2iaDiwVybFULXCG_WiNBIYgsfqt6Ic5xENnuK4vya8VCbCZDDYEBJK_r4nncLo7eub87l3bjnAtIRV6d2jQO0A"}</script>
+<script>
+(function () {
+  'use strict';
+  var STORE = 'horinum-acces';
+  var P = JSON.parse(document.getElementById('payload').textContent);
+  var form = document.getElementById('gate-form'), input = document.getElementById('code');
+  var btn = document.getElementById('gate-btn'), msg = document.getElementById('gate-msg');
+  function dec(s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '=';
+    var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; }
+  function enc(u) { var s = ''; for (var i = 0; i < u.length; i++) s += String.fromCharCode(u[i]);
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function store(t) { try { sessionStorage.setItem(STORE, t); } catch (e) {} }
+  function forget() { try { sessionStorage.removeItem(STORE); } catch (e) {} }
+  function openWith(raw) {
+    return crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt'])
+      .then(function (k) { return crypto.subtle.decrypt({ name: 'AES-GCM', iv: dec(P.iv) }, k, dec(P.ct)); })
+      .then(function (pt) { return new Response(new Blob([pt]).stream().pipeThrough(new DecompressionStream('gzip'))).text(); })
+      .then(function (html) { store(enc(raw)); document.open(); document.write(html); document.close(); });
+  }
+  function derive(code) {
+    return crypto.subtle.importKey('raw', new TextEncoder().encode(code), 'PBKDF2', false, ['deriveBits'])
+      .then(function (base) { return crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: dec(P.salt), iterations: P.iter }, base, 256); })
+      .then(function (bits) { return new Uint8Array(bits); });
+  }
+  function ready() { document.body.classList.remove('is-busy'); input.focus(); }
+  if (!window.crypto || !crypto.subtle || typeof DecompressionStream === 'undefined') {
+    document.body.classList.remove('is-busy');
+    msg.textContent = 'Ce navigateur ne permet pas d’ouvrir ce document. Utilisez une version récente de Chrome, Edge, Firefox ou Safari.';
+    btn.disabled = true; input.disabled = true; return;
+  }
+  var m = location.hash.match(/(?:^#|&)acces=([A-Za-z0-9_-]+)/);
+  if (m) history.replaceState(null, '', location.pathname + location.search);
+  var token = m ? m[1] : null;
+  if (!token) { try { token = sessionStorage.getItem(STORE); } catch (e) {} }
+  if (token) {
+    openWith(dec(token)).catch(function () {
+      forget(); ready();
+      msg.textContent = 'Ce lien d’accès n’est plus valide. Saisissez le code reçu.';
+    });
+  } else { ready(); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var code = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (!code) return;
+    btn.disabled = true; msg.textContent = 'Vérification du code…';
+    derive(code).then(openWith).catch(function () {
+      btn.disabled = false; input.select();
+      msg.textContent = 'Code incorrect. Vérifiez qu’il correspond à celui reçu avec le lien.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
